@@ -24,6 +24,7 @@ pipeline {
 		       
         		//}
 		withSonarQubeEnv('sonarQube_local') {
+			sh 'export SONAR_SCANNER_OPTS="-Xmx512m"'
 			sh '${SCANNER_HOME}/bin/sonar-scanner'
 		}
 	       
@@ -56,6 +57,7 @@ pipeline {
               	//snDevOpsChange()
 
 		withSonarQubeEnv('sonarQube_local') {
+			sh 'export SONAR_SCANNER_OPTS="-Xmx512m"'
 			sh '${SCANNER_HOME}/bin/sonar-scanner'
 		}
 	       
@@ -73,6 +75,7 @@ pipeline {
               	//snDevOpsChange()
                
 		withSonarQubeEnv('sonarQube_local') {
+			sh 'export SONAR_SCANNER_OPTS="-Xmx512m"'
 			sh '${SCANNER_HOME}/bin/sonar-scanner'
 		}
 	       
@@ -91,6 +94,7 @@ pipeline {
               	//snDevOpsChange()
 
 		withSonarQubeEnv('sonarQube_local') {
+			sh 'export SONAR_SCANNER_OPTS="-Xmx512m"'
 			sh '${SCANNER_HOME}/bin/sonar-scanner'
 		}
            }
