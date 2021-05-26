@@ -24,7 +24,7 @@ pipeline {
 		       
         		//}
 	        	withSonarQubeEnv('sonarQube_local') {
-	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
+	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties -Dsonar.projectKey=org.test:First_repo'
        
 				}
 	       
@@ -60,7 +60,7 @@ pipeline {
                
 
 	        	withSonarQubeEnv('sonarQube_local') {
-	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
+	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties -Dsonar.projectKey=org.test:First_repo'
        
 				}
 	       
@@ -79,7 +79,7 @@ pipeline {
                
 
 	        	withSonarQubeEnv('sonarQube_local') {
-	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
+	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties -Dsonar.projectKey=org.test:First_repo'
        
 				}
 	       
@@ -99,7 +99,7 @@ pipeline {
                
 
 	        	withSonarQubeEnv('sonarQube_local') {
-	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
+	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties -Dsonar.projectKey=org.test:First_repo'
        
 				}
 	       
