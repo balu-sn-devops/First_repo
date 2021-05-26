@@ -12,21 +12,21 @@ pipeline {
             }
         }
         stage('Test') { 
-           	environment {
-	    		 SCANNER_HOME = tool 'sonarScanner'
-	  		}
+           environment {
+	    	SCANNER_HOME = tool 'sonarScanner'
+	   }
            steps {
-              snDevOpsStep()
+               snDevOpsStep()
                sh 'mvn test'
                
                //withSonarQubeEnv('Sonar_Cloud') {
 			      // sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner-cloud.properties'
 		       
         		//}
-	        	withSonarQubeEnv('sonarQube_local') {
-	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
-       
-				}
+		withSonarQubeEnv('sonarQube_local') {
+			sh 'export SONAR_SCANNER_OPTS="Xmx5123m -Xms1536m -XX:+HeapDumpOnOutOfMemoryError"'
+			sh '${SCANNER_HOME}/bin/sonar-scanner'
+		}
 	       
            }
             post {
@@ -36,8 +36,6 @@ pipeline {
             }
         }
     
-       
-
        stage('Deploy') {
              steps{
                   snDevOpsStep (ignoreErrors:true)
@@ -52,17 +50,16 @@ pipeline {
                 branch 'dev' 
             }
             environment {
-	    		 SCANNER_HOME = tool 'sonarScanner'
-	  		}
+	    	SCANNER_HOME = tool 'sonarScanner'
+	    }
            steps {
-              snDevOpsStep()
-              //snDevOpsChange()
-               
+              	snDevOpsStep()
+              	//snDevOpsChange()
 
-	        	withSonarQubeEnv('sonarQube_local') {
-	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
-       
-				}
+		withSonarQubeEnv('sonarQube_local') {
+			sh 'export SONAR_SCANNER_OPTS="Xmx5123m -Xms1536m -XX:+HeapDumpOnOutOfMemoryError"'
+			sh '${SCANNER_HOME}/bin/sonar-scanner'
+		}
 	       
            }
         }
@@ -71,17 +68,16 @@ pipeline {
                 branch 'feature1' 
             }
             environment {
-	    		 SCANNER_HOME = tool 'sonarScanner'
-	  		}
+	    	SCANNER_HOME = tool 'sonarScanner'
+	    }
            steps {
-              snDevOpsStep()
-              //snDevOpsChange()
+              	snDevOpsStep()
+              	//snDevOpsChange()
                
-
-	        	withSonarQubeEnv('sonarQube_local') {
-	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
-       
-				}
+		withSonarQubeEnv('sonarQube_local') {
+			sh 'export SONAR_SCANNER_OPTS="Xmx5123m -Xms1536m -XX:+HeapDumpOnOutOfMemoryError"'
+			sh '${SCANNER_HOME}/bin/sonar-scanner'
+		}
 	       
            }
         }
@@ -91,21 +87,17 @@ pipeline {
                 branch 'patch-1' 
             }
             environment {
-	    		 SCANNER_HOME = tool 'sonarScanner'
-	  		}
+	    	SCANNER_HOME = tool 'sonarScanner'
+	    }
            steps {
-              snDevOpsStep()
-              //snDevOpsChange()
-               
+              	snDevOpsStep()
+              	//snDevOpsChange()
 
-	        	withSonarQubeEnv('sonarQube_local') {
-	       				sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
-       
-				}
-	       
+		withSonarQubeEnv('sonarQube_local') {
+			sh 'export SONAR_SCANNER_OPTS="Xmx5123m -Xms1536m -XX:+HeapDumpOnOutOfMemoryError"'
+			sh '${SCANNER_HOME}/bin/sonar-scanner'
+		}
            }
         }
-      
-      
   }
 }
